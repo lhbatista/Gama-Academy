@@ -45,23 +45,6 @@ function buscar(){
 }
 
 
-// function obterData(){    
-
-// }
-
-// function preencherData(){
-//     let data = '';
-
-// }
-
-function nomeClient(){
-    let cliente = document.getElementById("txtUsuario");
-    let clienteID = cliente[cliente.selectedIndex].value; 
-
-    fetch("http://localhost:8080/agendamentos/cliente"+clienteId)
-    .then(res => res.json())
-    .then(result => preencheResposta(result));
-}
 
 function preencheResposta(resposta){
     let agendas = '<table class = "table"> <tr> <th>cliente</th> <th>data</th> <th>hora</th> </tr>';
@@ -75,4 +58,37 @@ function preencheResposta(resposta){
     agendas = agendas + '</table>';
 
     document.getElementById("tableResposta").innerHTML = agendas;
+}
+
+function buscarPorData(){
+    let data = document.getElementById("dataAgendamento").value;
+
+    fetch("http://localhost:8080/agendamentos/data?dataagendamento="+data)
+    .then(res => res.json())
+    .then(result => preencheRespostaAgendamento(result));
+}
+
+function preencheRespostaAgendamento(resposta) {
+    console.log(resposta);
+    let agendas = '<table class = "table"> <tr> <th>agencia</th> <th>cliente</th> <th>data</th> <th>hora</th> </tr>';
+
+    for (let index = 0; index < resposta.length; index++) {
+        agendas = agendas + `<tr> <td> ${resposta[index].agencia.nome} </td> 
+                                  <td> ${resposta[index].nome} </td> 
+                                  <td> ${resposta[index].dataAgendamento} </td>
+                                  <td> ${resposta[index].horaAgendamento} </td> </tr>`;
+    }
+
+    agendas = agendas + '</table>';
+
+    document.getElementById("tableResposta").innerHTML = agendas;
+}
+
+function nomeClient(){
+    let cliente = document.getElementById("txtUsuario");
+    let nome = cliente.value; 
+
+    fetch("http://localhost:8080/agendamentos/cliente"+nome)
+    .then(res => res.json())
+    .then(result => preencheResposta(result));
 }
