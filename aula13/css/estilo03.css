@@ -1,0 +1,33 @@
+
+/* Zera a margem superior padrão */
+*{
+    margin-top: 0px;
+}
+
+/* seletor de elemento HTML */
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* seletor de classe */
+.bloco{
+    color: blue;
+    font-size: 30px;
+    background-color: coral;
+}
+
+/* seletor por Id */
+
+#linha{
+    /* color: red; */
+    /* 1em = 16px */
+    font-size: 1.5em; 
+}
+
+#paragrafo1{
+    background-color: darkgreen;
+    border-style: solid;
+    border-color: black;
+    padding: 5px;
+    margin-left: 10px;
+}
