@@ -88,7 +88,7 @@ function nomeClient(){
     let cliente = document.getElementById("txtUsuario");
     let nome = cliente.value; 
 
-    fetch("http://localhost:8080/agendamentos/cliente"+nome)
+    fetch("http://localhost:8080/agendamentos/cliente/"+nome)
     .then(res => res.json())
-    .then(result => preencheResposta(result));
+    .then(result => preencheRespostaAgendamento(result));
 }
